@@ -4,7 +4,7 @@ output:	main.o tree.o
 main.o: main.cpp
 	g++ -c main.cpp
 
-tree.o: tree.cpp tree.hpp
+tree.o: tree.cpp tree.h
 	g++ -c tree.cpp
 
 clean:

@@ -9,10 +9,11 @@ using namespace std;
 
 //Create a new node 
 Node* makeNew(string data) { 
-  
+  char ch = data.at(0); 
   Node* create = new Node(); 
-  makeNew->data = data; 
-  makeNew->left = makeNew-> right = NULL: 
+  create->data = data; 
+  create->left = create-> right = NULL;
+  create->key = ch;  
 } 
 //Insert Nodes to build the tree 
 Node* buildTree(Node* root, string data) {
@@ -24,11 +25,11 @@ Node* buildTree(Node* root, string data) {
   //Calls function recursively until finds the correct node. 
   //Inserts to the left if data equals or is less then  
   else if (data <= root ->data){
-    root ->left = Insert(root->left,data); 
+    root ->left = buildTree(root->left,data); 
   } 
   //Inserts to the right if data is greater 
   else{ 
-    root->right = Insert(root->right,data); 
+    root->right = buildTree(root->right,data); 
   } 
   return root; 
 } 
