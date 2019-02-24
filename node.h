@@ -1,18 +1,17 @@
 //Rachel Festervand 
 //Compilors, project 0
 //This is the header file for the nodes and where they are defined.
-
+ 
 #ifndef NODE_H
 #define NODE_H 
 
+#include <string> 
+typedef struct Node {
+  
+   struct Node *left; 
+   struct Node *right; 
+   std::string data;  
 
-typedef struct node {
- 
-  int count; 
-  struct node *left; 
-  struct node *right; 
-  char *data[]; 
-
-}node; 
+}Node; 
 
 #endif  
