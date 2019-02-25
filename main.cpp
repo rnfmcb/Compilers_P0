@@ -23,7 +23,10 @@ if (!infile){
 while (infile >> word){ 
    buildTree(root, word); 
 } 
-//= buildTree(file); 
+//Print the In order traversal
+cout << "Printing inorder traversal " << endl;  
+printInorder(root); 
+ 
 //printPreorder(root); 
 //printInorder(root); 
 //printPostorder(root);
