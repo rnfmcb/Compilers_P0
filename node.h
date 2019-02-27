@@ -7,11 +7,11 @@
 
 #include <string> 
 typedef struct Node {
-  
+   char key;  
    struct Node *left; 
-   struct Node *right; 
+   struct Node *right;  
    std::string data;  
-
-}Node; 
+   
+}Node;  
 
 #endif  

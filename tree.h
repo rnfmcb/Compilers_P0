@@ -7,8 +7,8 @@
 
 #include "node.h"
 
-Node* newNode(std::string);  
+Node* insert(Node*, std::string,char);  
 Node* buildTree(Node*,std::string);
-void printInorder(Node*);   
+//void printInorder(Node*);   
 #endif 
  

@@ -12,7 +12,7 @@ using namespace std;
 int main(int argc, char* argv[]) { 
 //Process command line arguments 
 ifstream infile; //Open test file 
-Node* root = NULL; //Pointer to root
+Node* root = NULL;  
 string word; 
 
 infile.open("test.txt"); 
@@ -25,7 +25,7 @@ while (infile >> word){
 } 
 //Print the In order traversal
 cout << "Printing inorder traversal " << endl;  
-printInorder(root); 
+//printInorder(root); 
  
 //printPreorder(root); 
 //printInorder(root); 
