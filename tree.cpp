@@ -1,87 +1,103 @@
+//Rachel Festervand Program Translation 
+//This is the class file for a binary search tree 
+
 #include <iostream> 
 #include <stdio.h> 
 #include <stdlib.h>
 #include <string>  
 #include "tree.h" 
-
+ 
 
 using namespace std; 
 
-Node* insert(Node* leaf, string data, char key){
-  if(leaf!= NULL) 
-     buildTree(leaf,data); 
-  else{
-     leaf = new Node; 
-     leaf->data=data; 
-     leaf->left = NULL; 
-     leaf->right = NULL; 
-     leaf->key = key; 
-   }  
-}
-//Insert Nodes to build the tree 
-Node*  buildTree(Node *leaf, string data) {
-  char k = data.at(0);
-  //If nothing is in the root, make a new node   
- 
-  if (leaf == NULL) { 
-    leaf = new Node; 
-    leaf->data = data; 
-    leaf->key = k; 
-    leaf->right = NULL; 
-    leaf->left = NULL;
-    cout << "Root added " << endl; 
-    return leaf;  
-  } 
+ BST::BST(){ 
+  totalDepth = 1;   
+ } 
 
-  else if (leaf->key == k) { 
+//Insert Nodes to build the tree 
+void  BST:: buildTree(Node *tree, Node* leaf) {
+  string data = leaf->data;
+  //cout << "Data from leaf " << data << endl; 
+  string dataAdd;  
+  char k = data.at(0);
+ // cout << "K value is " << k << endl; 
+  //cout << "Data and key " << data << " " << k << endl; 
+ 
+  //If the value is already in the tree, then add to the array 
+  if (tree->key == k) { 
+     dataAdd = leaf->data; 
+     tree->data = data.append(dataAdd); 
     //add some data
-    cout << "added data" << endl;  
+    cout << "added data to " << tree-> data << "key "<< tree->key <<  endl;  
   } 
 
 
   //Calls function recursively until finds the correct node. 
   //Inserts to the right  if data equals or is less then  
- else  if (k > leaf->key){
-    if(leaf->right != NULL) 
-      	insert(leaf->right, data, k); 
-    else{
-    	leaf->right = new Node; 
-      	leaf->right ->key= k; 
-      	leaf->right->right = NULL; 
-      	leaf->right->left = NULL; 
+   if (k > tree->key){
+      if(tree->right != NULL){  
+       	buildTree(tree->right,leaf);
+        cout << "Recalling right leaf node" << endl;
+      }  
+      else{ 
+    	tree->right = new Node; 
+      	tree->right->key= k; 
+      	tree->right->right = NULL; 
+      	tree->right->left = NULL;
+        tree->right->depth = totalDepth; 
+        tree->right->data = data; 
+        cout << "Created new right node "<< "key " << tree->key << " tree data " << tree->data << endl; 
+        cout << "depth "  << tree->depth << endl;   
      }  
         
   }
   
   //Insertsf to the left if 
-  else if (k < leaf->key){ 
-    if(leaf->left != NULL) 
-       buildTree(leaf->left,data);  
+  if (k < tree->key){ 
+    if(tree->left != NULL) { 
+       buildTree(tree->left,leaf);   
+      // cout << "Recalling left node" << endl; 
+    }   
     else{   
-       leaf->left = new Node; 
-       leaf->left->key = k; 
-       leaf->left->left= NULL; 
-       leaf->right->right = NULL; 
+       tree->left = new Node; 
+       tree->left->key = k; 
+       tree->left->left = NULL; 
+       tree->left->right = NULL;
+       tree->left->data = data; 
+       tree->depth = totalDepth; 
+       cout << "Adding new left leaf, key: " << tree->key << "Data: "<< tree->data << "depth " << tree->depth <<  endl;  
      } 
   }
-  return leaf; 
+   
 }  
 
 //Prints in order traversal    
-/*void printInorder(Node *root){ 
-  
-  if(root != NULL) { 
-    printInorder(root->left);
-  }  
-    cout << "Key " << root->key << endl; 
-    cout << "Left child " << root->left << endl;    
-    cout << "Data " << root->data << endl;  
-    printInorder(root->right); 
-    cout << "Right child " << root->right << endl; 
-    cout << "Data " << root->data << endl; 
+void BST::printInorder(Node *ptr){ 
+    
+    //If the root 
+    //if (ptr->depth = 0)
+    //  cout << ptr->key << " " << ptr->data << endl; 
+    
+    
+    if( ptr != NULL){ 
+      printInorder(ptr->left); 
+      print(ptr); 
+      printInorder(ptr->right); 
+    }      
 } 
-*/
-
+void BST:: print(Node *ptr) { 
+   
+    if (ptr-> depth != 0){  
+    int printDepth = ptr->depth; 
+    string dash; 
+    for(int i = 1; i <= printDepth; i++){ 
+        cout << "-"; 
+    } 
+    cout << ptr->key << " " << ptr->data << endl; 
+    } 
+   else 
+     cout << ptr->key << " " << ptr->data << endl; 
+}     
 
 
 //printPreorder()

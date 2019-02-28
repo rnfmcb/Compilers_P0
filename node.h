@@ -6,12 +6,12 @@
 #define NODE_H 
 
 #include <string> 
-typedef struct Node {
+struct Node {
    char key;  
    struct Node *left; 
    struct Node *right;  
    std::string data;  
    
-}Node;  
+};  
 
 #endif  

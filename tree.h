@@ -1,14 +1,21 @@
 //Rachel Festervand 
 //Project 0 Compilors 
-//This is the header file for tree
+//This is the header file for tree class 
 #include <iostream> 
 #ifndef TREE_H 
 #define TREE_H 
 
 #include "node.h"
 
-Node* insert(Node*, std::string,char);  
-Node* buildTree(Node*,std::string);
-//void printInorder(Node*);   
+class BST{
+  public:
+     int totalDepth;      
+     void  buildTree(Node*,Node*);
+     void printInorder(Node*);
+     void print(Node*);  
+     BST(); 
+}; 
+
+  
 #endif 
  
