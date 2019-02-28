@@ -17,16 +17,15 @@ using namespace std;
 //Insert Nodes to build the tree 
 void  BST:: buildTree(Node *tree, Node* leaf) {
   string data = leaf->data;
+  string tempData = tree->data.append(" "); 
   //cout << "Data from leaf " << data << endl; 
-  string dataAdd;  
   char k = data.at(0);
  // cout << "K value is " << k << endl; 
   //cout << "Data and key " << data << " " << k << endl; 
  
   //If the value is already in the tree, then add to the array 
-  if (tree->key == k) { 
-     dataAdd = leaf->data; 
-     tree->data = data.append(dataAdd); 
+  if (tree->key == k) {  
+     tree->data = tempData.append(data); 
     //add some data
     cout << "added data to " << tree-> data << "key "<< tree->key <<  endl;  
   } 
@@ -39,7 +38,7 @@ void  BST:: buildTree(Node *tree, Node* leaf) {
        	buildTree(tree->right,leaf);
         cout << "Recalling right leaf node" << endl;
       }  
-      else{ 
+      else{  
     	tree->right = new Node; 
       	tree->right->key= k; 
       	tree->right->right = NULL; 
@@ -58,13 +57,13 @@ void  BST:: buildTree(Node *tree, Node* leaf) {
        buildTree(tree->left,leaf);   
       // cout << "Recalling left node" << endl; 
     }   
-    else{   
+    else{    
        tree->left = new Node; 
        tree->left->key = k; 
        tree->left->left = NULL; 
        tree->left->right = NULL;
        tree->left->data = data; 
-       tree->depth = totalDepth; 
+       tree->left->depth = totalDepth;  
        cout << "Adding new left leaf, key: " << tree->key << "Data: "<< tree->data << "depth " << tree->depth <<  endl;  
      } 
   }
