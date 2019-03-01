@@ -22,6 +22,7 @@ pNode = &newNode;
 int defined = 0;     
 string word; 
 
+
 infile.open("test.txt"); 
 if (!infile){ 
  cout << "Failure to open file" << endl; 
@@ -37,14 +38,15 @@ while (infile >> word){
       proot->left = NULL;
       proot->key = k;
       proot->depth = 0;  
-      cout << "Root is initialized at with key " << proot->key << endl; 
-      cout << "Data is " << proot->data << endl; 
+      cout << "Root is initialized  with key " << proot->key << endl; 
+      cout << "Data is " << proot->data;
       cout << "level " << proot->depth << endl; 
       defined = 1;
        
    } 
    else{ 
-      pNode->data = word; 
+      pNode->data = word;
+      pNode->depth = bst.totalDepth;  
       bst.buildTree(proot,pNode); 
       cout << "pNode data is  "<< pNode->data << endl; 
    } 
@@ -52,10 +54,10 @@ while (infile >> word){
       //Print the In order traversal
       cout << "Printing inorder traversal " << endl;  
       bst.printInorder(proot); 
- 
-//printPreorder(root); 
-//printInorder(root); 
-//printPostorder(root);
+      cout << "Printing preorder tranversal " << endl; 
+      bst.printPreorder(proot); 
+      cout << "Printing postorder tranversal " << endl; 
+      bst.printPostorder(proot);
 
 return 0; 
 } 

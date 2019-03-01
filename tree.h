@@ -9,9 +9,12 @@
 
 class BST{
   public:
-     int totalDepth;      
+     int totalDepth; 
+     bool check;      
      void  buildTree(Node*,Node*);
      void printInorder(Node*);
+     void printPreorder(Node*); 
+     void printPostorder(Node*); 
      void print(Node*);  
      BST(); 
 }; 
