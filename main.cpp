@@ -63,7 +63,22 @@ int main(int argc, char*argv[]){
     
 
    //ifstream infile("test.txt"); 
-   //Create the file 
+   //Create the file
+   if(argc == 1) { 
+      string filename = "test.txt"; 
+      string temp; 
+      ofstream file; 
+      file.open(filename.c_str()); 
+      while(getline(cin,temp)){ 
+	 file << temp << " ";  
+      } 
+      file.close(); 
+      ifstream infile; 
+      processFile(infile,filename); 
+   } 
+          
+
+ 
    if(argc == 2) {
       string file = argv[1]; 
       string filename = file + ".input1"; 
