@@ -11,7 +11,7 @@ struct Node {
    struct Node *left; 
    struct Node *right;  
    std::string data;  
-   
+   int depth; 
 };  
 
 #endif  
